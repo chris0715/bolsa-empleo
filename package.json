@@ -4,6 +4,7 @@
   "description": "proyecto basado en una bolsa de empleo",
   "main": "Server.js",
   "scripts": {
+    "start": "babel-node Server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/chris0715/bolsa-empleo/issues"
   },
-  "homepage": "https://github.com/chris0715/bolsa-empleo#readme"
+  "homepage": "https://github.com/chris0715/bolsa-empleo#readme",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.14.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0"
+  }
 }
