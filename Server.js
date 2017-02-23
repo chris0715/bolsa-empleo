@@ -12,8 +12,14 @@ let serverPort = 5000;
 
 app.use(webpackmide(compiler))
 app.get('/', function(req,res){
-    
+    console.log(process.env)
     res.render('index');
 })
+
+app.get('/api/puesto/:id', function(req,res){
+    
+    res.render('puesto');
+})
+
 
 app.listen(serverPort, ()=>{console.log('escuchando en el puerto :'+serverPort)})
