@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 const Header = function(props){
     return <nav className="navbar navbar-default">
@@ -12,7 +13,7 @@ const Header = function(props){
         <span className="icon-bar"></span>
         <span className="icon-bar"></span>
       </button>
-      <a className="navbar-brand" href="#">Brand</a>
+      <Link className="navbar-brand" to="/">Bolsa De Empleos</Link>
     </div>
 
     

@@ -2,7 +2,11 @@ import React from 'react';
 
 
 class Puesto extends React.Component{
+    constructor(){
+        
+    }
     
+   
     render(){
         
         return(<div>

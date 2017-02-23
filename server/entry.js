@@ -4,6 +4,8 @@ import ReactDom from 'react-dom';
 import Layout from '../public/components/layout.js';
 import {IndexRoute,Router, Route, browserHistory} from 'react-router';
 import Puesto from '../public/components/puesto/puesto.js';
+import Publicar from '../public/components/puesto/publicar.js';
+
 import Index from '../public/components/home/index.js';
 
 
@@ -11,4 +13,5 @@ ReactDom.render(<Router history={browserHistory}>
     <Route path="/" component={Layout}>
         <IndexRoute component={Index}  />
         <Route path="puesto/:id" component={Puesto} />
+        <Route path="publicar" component={Publicar} />
     </Route></Router>,document.getElementById('app'));

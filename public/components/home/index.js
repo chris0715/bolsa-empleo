@@ -9,7 +9,7 @@ class Index extends React.Component{
        //Contenido princicipal de la pagina
             <div className="container">
                 
-                <Link to="puesto"><button className="btn btn-default">Publicar Empleo</button></Link>
+                <Link to="publicar"><button className="btn btn-default">Publicar Empleo</button></Link>
                 
                 
                 <table className="table table-hover">
