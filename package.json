@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "proyecto basado en una bolsa de empleo",
   "main": "Server.js",
+  "engines": {
+    "node": "7.4.0" // intentionally so big version number
+  },
   "scripts": {
     "start": "nodemon Server.js --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1",
