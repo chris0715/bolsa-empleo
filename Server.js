@@ -13,7 +13,7 @@ app.use(webpackmide(compiler))
 
 app.set('view engine', 'ejs');
 
-let serverPort = 5000;
+let serverPort = process.env.PORT || 5000;
 
 var  ModeloPuesto = require( './src/model/puestoModel');
 mongoose.connect('mongodb://chris:123456@ds161209.mlab.com:61209/mitrabajodb');
