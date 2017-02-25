@@ -1,9 +1,21 @@
 import React from 'react';
-import {Route,Link} from 'react-router';
-
+import {Link} from 'react-router';
+import $ from 'jquery';
 
 class Index extends React.Component{
-    
+
+    constructor(){
+        super();
+        this.state = {puestos:[]}
+         
+    }
+
+componentDidMount(){
+ $.get('/api/puestos').done((data)=>{
+     this.setState({puestos: data});
+ })
+}
+
     render(){
         return(
        //Contenido princicipal de la pagina
@@ -22,14 +34,26 @@ class Index extends React.Component{
                     </tr>
                 </thead>
                     <tbody>
-                    <tr>
+                    {/*<tr>
                         
                         <td></td>
                         <td>Santo Domingo</td>
-                        <td><Link to="/puesto/45">Programador</Link>  </td>
+                        <td><Link to="puesto/45">Programador</Link>  </td>
                         <td>NewTech</td>
                            
-                    </tr>
+                    </tr>*/}
+                    {
+                        this.state.puestos.map(valor=>{
+                            return <tr>
+
+                                <td></td>
+                                <td>{valor.localizacion}</td>
+                                <td><Link to="puesto/45">{valor.puesto}</Link>  </td>
+                                <td>{valor.compania}</td>
+
+                            </tr>
+                        })
+                    }
                     </tbody>
                 </table>
             </div>
