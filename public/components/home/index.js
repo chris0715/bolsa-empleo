@@ -48,7 +48,7 @@ componentDidMount(){
 
                                 <td></td>
                                 <td>{valor.localizacion}</td>
-                                <td><Link to="puesto/45">{valor.puesto}</Link>  </td>
+                                <td><Link to={"puesto/"+valor._id}>{valor.puesto}</Link>  </td>
                                 <td>{valor.compania}</td>
 
                             </tr>

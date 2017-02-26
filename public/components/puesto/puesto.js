@@ -3,14 +3,22 @@ import $ from 'jquery';
 
 class Puesto extends React.Component{
     
+    constructor(){
+        super();
+        this.state= {trabajo:{}}
+    }
 
     componentDidMount(){
-        var id = this.props.params.id;
-        $.ajax({url:'api/puestos',
+        console.log(this.props.params.puestoid);
+        var elId = {idk:this.props.params.puestoid }
+        $.ajax({url:'/api/puestos',
         type: 'GET',
-        contentType: 'application/json',
-        data:JSON.stringify(id)
-    
+        contentType: 'application/x-www-form-urlencoded',
+        data:{id:this.props.params.puestoid},
+        dataType: 'json'
+        }).then((data)=>{
+            console.log('este es el valor retornado al cliente '+data);
+            this.setState({trabajo:data});
         })
 
     }
@@ -19,10 +27,10 @@ class Puesto extends React.Component{
         
         return(<div className="container">
                <div className="panel panel-default">
-               <div className="panel-heading"><h2> Pocision:</h2></div>
+               <div className="panel-heading"><h2> Pocision:{this.state.trabajo.puesto}</h2></div>
                <div className="panel panel-body">
                 <div>
-                 Descripcion de puesto:
+                 Descripcion de puesto: <div>{this.state.trabajo.informacion}</div>
                 </div>
                </div>
                </div>

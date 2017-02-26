@@ -46,6 +46,7 @@ export default class AA extends React.Component{
 
             <div className="form-group">
             <label>compania</label>
+
             <input className="form-control" name="companiaF" onChange={this.manejarPuesto.bind(this)} />
             </div>
 

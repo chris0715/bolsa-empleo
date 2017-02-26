@@ -9,6 +9,6 @@ export default (
 
     <Route path="/" component={Layout}>
         <IndexRoute component={Index}  />
-        <Route path="puesto/:id" component={Puesto} />
+        <Route path="puesto/:puestoid" component={Puesto} />
         <Route path="publicar" component={Publicar} />
     </Route>)
