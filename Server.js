@@ -24,17 +24,13 @@ mongoose.connection.on('error', function(error){
 })
 
 
-app.get('/', function(req,res){
-    console.log(process.env)
-    res.render('index');
-})
+
 
 app.get('/api/puestos', BodyParser.urlencoded({extended:false}),function(req,res){
 
     console.log(req.query.id);
 
     if(req.query.id  !== undefined){
-        const id = ObjetoID(req.body.id);
         console.log("Objeto ID"+ id);
         ModeloPuesto.findById(req.query.id).then((dataa)=>{console.log("con parametros "+dataa); res.json(dataa)})
     }
@@ -60,6 +56,11 @@ app.post('/api/puestos', function (req,res) {
 
     res.status(200);
 
+})
+
+app.get('*', function(req,res){
+    console.log(process.env)
+    res.render('index');
 })
 
 

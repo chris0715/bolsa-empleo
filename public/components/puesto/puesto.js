@@ -27,7 +27,7 @@ class Puesto extends React.Component{
         
         return(<div className="container">
                <div className="panel panel-default">
-               <div className="panel-heading"><h2> Pocision:{this.state.trabajo.puesto}</h2></div>
+               <div className="panel-heading"><h2> Pocision:<span>{this.state.trabajo.puesto},</span></h2></div>
                <div className="panel panel-body">
                 <div>
                  Descripcion de puesto: <div>{this.state.trabajo.informacion}</div>

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {browserHistory} from 'react-router';
 import $ from 'jquery';
 
 export default class AA extends React.Component{
@@ -27,6 +27,10 @@ export default class AA extends React.Component{
         
     });
     event.target.reset();
+    setTimeout(function(){
+        browserHistory.push('/');
+    }, 2000);
+
     }
     
     render(){
