@@ -31,7 +31,6 @@ app.get('/api/puestos', BodyParser.urlencoded({extended:false}),function(req,res
     console.log(req.query.id);
 
     if(req.query.id  !== undefined){
-        console.log("Objeto ID"+ id);
         ModeloPuesto.findById(req.query.id).then((dataa)=>{console.log("con parametros "+dataa); res.json(dataa)})
     }
     else{

@@ -10,7 +10,6 @@ class Puesto extends React.Component{
 
     componentDidMount(){
         console.log(this.props.params.puestoid);
-        var elId = {idk:this.props.params.puestoid }
         $.ajax({url:'/api/puestos',
         type: 'GET',
         contentType: 'application/x-www-form-urlencoded',

@@ -11,4 +11,5 @@ export default (
         <IndexRoute component={Index}  />
         <Route path="puesto/:puestoid" component={Puesto} />
         <Route path="publicar" component={Publicar} />
+        
     </Route>)
