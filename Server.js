@@ -4,17 +4,19 @@ var webpackmide =require('webpack-dev-middleware');
 var webpack =require( 'webpack');
 var BodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var Passport = require('passport');
 var ObjetoID = require('mongoose').Types.ObjectId;
 
-let app = express();
+const app = express();
 let compiler = webpack(require('./webpack.config.js'));
 app.use(express.static(__dirname+'/public'));
 app.use(BodyParser.json());
 app.use(webpackmide(compiler))
+app.use(Passport.initialize());
 
 app.set('view engine', 'ejs');
 
-let serverPort = process.env.PORT || 5000;
+const serverPort = process.env.PORT || 5000;
 
 var  ModeloPuesto = require( './src/model/puestoModel');
 mongoose.connect('mongodb://localhost/myapp');

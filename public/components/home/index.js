@@ -19,7 +19,7 @@ componentDidMount(){
     render(){
         return(
        //Contenido princicipal de la pagina
-            <div className="container">
+            <div style={{paddingTop:"50px"}} className="container">
                 
                 <Link to="publicar"><button className="btn btn-default">Publicar Empleo</button></Link>
                 

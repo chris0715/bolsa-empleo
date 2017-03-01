@@ -23,13 +23,14 @@ class Puesto extends React.Component{
     }
    
     render(){
-        
+        const estiloDescripcion ={backgroundColor:" #8084cc"};
         return(<div className="container">
                <div className="panel panel-default">
-               <div className="panel-heading"><h2> Pocision:<span>{this.state.trabajo.puesto},</span></h2></div>
+               <div className="panel-heading"><h2 className="text-center"> {this.state.trabajo.puesto}</h2></div>
                <div className="panel panel-body">
+                <span><h3>Localizacion:</h3> {this.state.trabajo.localizacion}</span>
                 <div>
-                 Descripcion de puesto: <div>{this.state.trabajo.informacion}</div>
+                 <span style={estiloDescripcion} ><h3>Descripcion de puesto:</h3></span> <div>{this.state.trabajo.informacion}</div>
                 </div>
                </div>
                </div>

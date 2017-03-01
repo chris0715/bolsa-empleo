@@ -4,13 +4,12 @@
   "description": "proyecto basado en una bolsa de empleo",
   "main": "Server.js",
   "engines": {
-    "node": "^7.4.0" 
+    "node": "^7.4.0"
   },
   "scripts": {
     "start": "nodemon Server.js --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
-
   },
   "repository": {
     "type": "git",
@@ -28,10 +27,13 @@
     "ejs": "^2.5.6",
     "express": "^4.14.1",
     "jquery": "^3.1.1",
+    "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.8.4",
+    "passport": "^0.3.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^3.0.2",
+    "validator": "^7.0.0",
     "webpack": "^2.2.1"
   },
   "devDependencies": {
