@@ -40,23 +40,23 @@ export default class AA extends React.Component{
         <form method="post" onSubmit={this.enviarPuesto.bind(this)}>
             <div className="form-group">
             <label>Puesto</label>
-            <input className="form-control" name="puestoF" onChange={this.manejarPuesto.bind(this)} />
+            <input className="form-control" required name="puestoF" onChange={this.manejarPuesto.bind(this)} />
             </div>
 
             <div className="form-group">
             <label>Localizacion</label>
-            <input className="form-control" name="LocalizacionF" onChange={this.manejarPuesto.bind(this)} />
+            <input className="form-control" required name="LocalizacionF" onChange={this.manejarPuesto.bind(this)} />
             </div>
 
             <div className="form-group">
             <label>compania</label>
 
-            <input className="form-control" name="companiaF" onChange={this.manejarPuesto.bind(this)} />
+            <input className="form-control" required name="companiaF" onChange={this.manejarPuesto.bind(this)} />
             </div>
 
             <div className="form-group">
             <label>Datos:</label>
-            <textarea className="form-control" name="datosF" onChange={this.manejarPuesto.bind(this)} />
+            <textarea className="form-control" required name="datosF" onChange={this.manejarPuesto.bind(this)} />
             </div>
 
             <input type="submit" value="Enviar" />
