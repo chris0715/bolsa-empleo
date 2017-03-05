@@ -11,6 +11,7 @@ const app = express();
 let compiler = webpack(require('./webpack.config.js'));
 app.use(express.static(__dirname+'/public'));
 app.use(BodyParser.json());
+app.use(BodyParser.urlencoded({extended:false}))
 app.use(webpackmide(compiler))
 app.use(Passport.initialize());
 

@@ -30,7 +30,7 @@ class Puesto extends React.Component{
                <div className="panel panel-body">
                 <span><h3>Localizacion:</h3> {this.state.trabajo.localizacion}</span>
                 <div>
-                 <span style={estiloDescripcion} ><h3>Descripcion de puesto:</h3></span> <div>{this.state.trabajo.informacion}</div>
+                 <span style={estiloDescripcion} ><h3>Descripcion de puesto:</h3></span> <div><p>{this.state.trabajo.informacion}</p></div>
                 </div>
                </div>
                </div>

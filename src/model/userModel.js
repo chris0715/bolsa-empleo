@@ -11,5 +11,9 @@ const UserSchema = new mongoose.Schema({
   name: String
 });
 
+UserSchema.methods.comparePassword = function comparePassword(password, callback) {
+  bcrypt.compare(password, this.password, callback);
+};
+
 
 export default mongoose.model('userModel',UserSchema);
