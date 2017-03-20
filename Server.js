@@ -1,11 +1,11 @@
 //Dependencias 
-var express= require('express');
-var webpackmide =require('webpack-dev-middleware');
-var webpack =require( 'webpack');
-var BodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var Passport = require('passport');
-var ObjetoID = require('mongoose').Types.ObjectId;
+const express= require('express');
+const webpackmide =require('webpack-dev-middleware');
+const webpack =require( 'webpack');
+const BodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const Passport = require('passport');
+const ObjetoID = require('mongoose').Types.ObjectId;
 
 const app = express();
 let compiler = webpack(require('./webpack.config.js'));
@@ -19,7 +19,7 @@ app.set('view engine', 'ejs');
 
 const serverPort = process.env.PORT || 5000;
 
-var  ModeloPuesto = require( './src/model/puestoModel');
+const  ModeloPuesto = require( './src/model/puestoModel');
 mongoose.connect('mongodb://localhost/myapp');
 //'mongodb://chris:123456@ds161209.mlab.com:61209/mitrabajodb'
 mongoose.connection.on('error', function(error){
