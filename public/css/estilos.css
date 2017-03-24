@@ -1,13 +1,8 @@
 
+body{
+    margin: 0;
+    font-size: 16px
+}
 p{
     font-family: fantasy;
-}
-
-#menuPrincipal{
-    
-}
-
-#lista-empleo{
-
-    margin-top: 100px;
 }

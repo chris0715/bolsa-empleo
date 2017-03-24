@@ -1,6 +1,7 @@
 import React from 'react';
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
 import $ from 'jquery';
+import Ktop from 'isomorphic-fetch';
 
 export default class AA extends React.Component{
     constructor(){
@@ -20,12 +21,14 @@ export default class AA extends React.Component{
 
     enviarPuesto(event){
         event.preventDefault();
-        $.ajax({url:'/api/puestos',
+        // ajax request that sends the form data to the server.
+      $.ajax({url:'/api/puestos',
         type:'POST',
         contentType: 'application/json',
         data:JSON.stringify(this.state.puesto)
-        
-    });
+        });
+    
+    // it allows a few minutes after submission to send it to the homepage. 
     event.target.reset();
     setTimeout(function(){
         browserHistory.push('/');

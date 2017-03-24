@@ -2,44 +2,74 @@
 const express= require('express');
 const webpackmide =require('webpack-dev-middleware');
 const webpack =require( 'webpack');
-const BodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const Passport = require('passport');
 const ObjetoID = require('mongoose').Types.ObjectId;
+const Jwt = require('express-jwt') ;
 
+import passport from 'passport';
+import sConfig from './src/config';
+import ModeloPuesto from './src/model/puestoModel';
+import { Strategy as LocalStrategy } from 'passport-local';
+
+const PORT = process.env.PORT || 5000;
 const app = express();
+
 let compiler = webpack(require('./webpack.config.js'));
-app.use(express.static(__dirname+'/public'));
-app.use(BodyParser.json());
-app.use(BodyParser.urlencoded({extended:false}))
-app.use(webpackmide(compiler))
-app.use(Passport.initialize());
 
 app.set('view engine', 'ejs');
 
-const serverPort = process.env.PORT || 5000;
+app.use(express.static(__dirname+'/public'));
+app.use(bodyParser.urlencoded({ extended:false }))
+app.use(webpackmide(compiler))
 
-const  ModeloPuesto = require( './src/model/puestoModel');
-mongoose.connect('mongodb://localhost/myapp');
-//'mongodb://chris:123456@ds161209.mlab.com:61209/mitrabajodb'
-mongoose.connection.on('error', function(error){
-    console.log(error);
+//Here we add the required passport configuration
+app.use(passport.initialize());
+
+const options = {
+    usernameField: "email",
+    passwordField: "password",
+    session: false
+}
+
+passport.use('local',new LocalStrategy(options,(username, password, done) => {
+    done(null, {
+        username: 'ediaz',
+        token: 'hoaholaholahoala'
+    })
+}))
+
+passport.serializeUser((user, done)=>{
+    done(null,user.username );
 })
 
+// --------------------------------------------------------
 
+app.post('/login', passport.authenticate('local'), (req, res) => {
 
+    console.log(req.user);
+    res.json({ 
+        object: {
+            username: req.user.username,
+            token: req.user.token
+        }
+    })
+})
 
-app.get('/api/puestos', BodyParser.urlencoded({extended:false}),function(req,res){
-
-    console.log(req.query.id);
-
-    if(req.query.id  !== undefined){
-        ModeloPuesto.findById(req.query.id).then((dataa)=>{console.log("con parametros "+dataa); res.json(dataa)})
+app.get('/api/puestos', bodyParser.urlencoded({extended:false}),function(req,res){
+    if (req.query.id) {
+        ModeloPuesto.findById(req.params.id).then((dataa)=>{console.log("con parametros "+dataa); res.json(dataa)})
+    } else {
+        ModeloPuesto.find().then((data)=>{ console.log("sin parametros"); res.json(data)})
     }
-    else{
-    ModeloPuesto.find().then((data)=>{ console.log("sin parametros"+data); res.json(data)})
+})
+
+app.get('/api/puestos/:id',function(req,res){
+
+    console.log("parametros lado servidor" +req.params.id);
+    if(req.params.id  !== undefined){
+        ModeloPuesto.findById(req.params.id).then((dataa)=>{console.log("con parametros"); res.json(dataa)})
     }
-    
 
 })
 
@@ -61,9 +91,10 @@ app.post('/api/puestos', function (req,res) {
 })
 
 app.get('*', function(req,res){
-    console.log(process.env)
     res.render('index');
 })
 
 
-app.listen(serverPort, ()=>{console.log('escuchando en el puerto :'+serverPort)})
+app.listen(PORT, () => {
+    console.log('escuchando en el puerto : %s', PORT)
+})

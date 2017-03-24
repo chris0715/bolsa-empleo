@@ -1,0 +1,69 @@
+Arguments: 
+  /home/chris/.nvm/versions/node/v6.9.5/bin/node /usr/share/yarn/bin/yarn.js
+
+PATH: 
+  /home/chris/.nvm/versions/node/v6.9.5/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+
+Yarn version: 
+  0.21.3
+
+Node version: 
+  6.9.5
+
+Platform: 
+  linux x64
+
+npm manifest: 
+  {
+    "name": "bolsa-empleo",
+    "version": "1.0.0",
+    "description": "proyecto basado en una bolsa de empleo",
+    "main": "Server.js",
+    "engines": {
+      "node": "^7.4.0"
+    },
+    "scripts": {
+      "start": "nodemon Server.js --exec babel-node",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
+    },
+    "repository": "git+https://github.com/chris0715/bolsa-empleo.git",
+    "author": "Christopher Encarnacion",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/chris0715/bolsa-empleo/issues"
+    },
+    "homepage": "https://github.com/chris0715/bolsa-empleo#readme",
+    "dependencies": {
+      "babel-loader": "^6.3.2",
+      "body-parser": "^1.16.1",
+      "ejs": "^2.5.6",
+      "express": "^4.14.1",
+      "express-jwt": "^5.1.0",
+      "jquery": "^3.1.1",
+      "jsonwebtoken": "^7.3.0",
+      "mongoose": "^4.8.4",
+      "passport": "^0.3.2",
+      "react": "^15.4.2",
+      "react-dom": "^15.4.2",
+      "react-router": "^3.0.2",
+      "validator": "^7.0.0",
+      "webpack": "^2.2.1"
+    },
+    "devDependencies": {
+      "babel-cli": "^6.23.0",
+      "babel-preset-es2015": "^6.22.0",
+      "webpack-dev-middleware": "^1.10.1",
+      "webpack-dev-server": "^2.4.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: EACCES: permission denied, mkdir '/home/chris/Documents/Bolsa de empleo/node_modules/uglify-js/node_modules/camelcase'
+      at Error (native)

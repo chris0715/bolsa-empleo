@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+import  mongoose from 'mongoose';
+mongoose.Promise = global.Promise;
 
 // define the User model schema
 const UserSchema = new mongoose.Schema({
@@ -10,10 +10,6 @@ const UserSchema = new mongoose.Schema({
   password: String,
   name: String
 });
-
-UserSchema.methods.comparePassword = function comparePassword(password, callback) {
-  bcrypt.compare(password, this.password, callback);
-};
 
 
 export default mongoose.model('userModel',UserSchema);

@@ -1,5 +1,5 @@
 import React from 'react';
-import $ from 'jquery';
+import fetch from 'isomorphic-fetch';
 
 class Puesto extends React.Component{
     
@@ -9,7 +9,17 @@ class Puesto extends React.Component{
     }
 
     componentDidMount(){
-        console.log(this.props.params.puestoid);
+        
+        const myId = this.props.params.puestoid;
+        console.log("this is the id"+myId);
+        fetch(`/api/puestos/${myId}`, {method:'GET',
+        }).then((response)=>{
+            response.json().then((data)=>{
+                this.setState({trabajo:data});
+            })
+        });
+
+       /* console.log(this.props.params.puestoid);
         $.ajax({url:'/api/puestos',
         type: 'GET',
         contentType: 'application/x-www-form-urlencoded',
@@ -18,7 +28,7 @@ class Puesto extends React.Component{
         }).then((data)=>{
             console.log('este es el valor retornado al cliente '+data);
             this.setState({trabajo:data});
-        })
+        })*/
 
     }
    

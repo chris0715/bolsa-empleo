@@ -1,10 +1,11 @@
-var  mongoose = require('mongoose');
+import  mongoose from 'mongoose';
+mongoose.Promise = global.Promise;
 
-var schemaPuestp = mongoose.Schema({
+const schemaPuestp = mongoose.Schema({
     localizacion:{type: String, required: true},
     puesto: {type: String, required: true},
     compania: {type: String, required: true},
     informacion: {type: String, required: true}
 })
 
-module.exports= mongoose.model('modeloPuesto',schemaPuestp);
+export default mongoose.model('modeloPuesto',schemaPuestp);
