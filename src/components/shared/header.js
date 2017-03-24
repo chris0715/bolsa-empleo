@@ -6,7 +6,7 @@ class Header extends React.Component{
    
    constructor(){
      super();
-     this.state ={modalIsOpen:false};
+     this.state ={modalIsOpen:false , isLoggedin:false};
    }
    componentDidMount(){
    }
@@ -15,7 +15,24 @@ class Header extends React.Component{
      e.preventDefault();
      this.setState({modalIsOpen:true})
    }
+
+  
+
+
     render(){
+
+      let notloggedIn;
+      
+      if(this.state.isLoggedin){
+        notloggedIn = <li>Bienbenido</li>;
+      } 
+      else
+        notloggedIn =(<ul className="right">
+      <li><a href="#">aa</a></li>
+      <li><a href="#">aa</a></li>);
+      </ul>);
+      
+
       return(
         <div>
         <nav>
@@ -34,10 +51,8 @@ class Header extends React.Component{
         </div>
       </form>
       </li>
-       
-      </ul>
-    
-  
+       </ul>
+      {notloggedIn}
   
   </div>
 </nav>
