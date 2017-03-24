@@ -27,10 +27,10 @@ class Header extends React.Component{
         notloggedIn = <li>Bienbenido</li>;
       } 
       else
-        notloggedIn =(<ul className="right">
-      <li><a href="#">aa</a></li>
-      <li><a href="#">aa</a></li>);
-      </ul>);
+        notloggedIn =<ul className="right">
+      <li><Link to="/registro">Registrarse</Link></li>
+      <li><a href="#">Acceder</a></li>);
+      </ul>;
       
 
       return(
