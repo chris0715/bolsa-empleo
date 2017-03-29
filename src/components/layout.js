@@ -3,8 +3,7 @@ import React  from 'react';
 import jquery from 'jquery';
 
 class Layout extends React.Component{
-
-
+    
 
     
 

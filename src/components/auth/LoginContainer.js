@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import LoginForm from './loginForm';
 import fetch from 'isomorphic-fetch';
+import {connect} from 'react-redux';
 
 class LoginContainer extends Component{
     constructor(){
@@ -26,8 +27,10 @@ class LoginContainer extends Component{
         $.ajax({url:'/login',
         type:'POST',
         contentType: 'application/x-www-form-urlencoded',
+        headers: {authorization: 'Bearer ' + localStorage.getItem('token')},
         data:{email: this.state.formData.email, password: this.state.formData.password}
     }).done((dataz)=>{
+            localStorage.setItem('token', dataz.token)
             this.setState({mensaje:dataz.success })
     });
     
@@ -47,5 +50,15 @@ class LoginContainer extends Component{
     }
 }
 
+function mapStateToProps(state){
+    return {
+        userData: state.userData
+    }
+}
 
-export default LoginContainer;
+function mapDispatchToProps(){
+    return {}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (LoginContainer);

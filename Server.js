@@ -9,7 +9,20 @@ const Jwt = require('express-jwt') ;
 
 import passport from 'passport';
 import sConfig from './src/config';
+
+//Models for database Interactions
 import ModeloPuesto from './src/model/puestoModel';
+import ModeloUsuarion from './src/model/userModel';
+// -------------------------------------------------
+
+// Connection to the database. 
+mongoose.connect(sConfig.externalDatabase);
+mongoose.connection.on('error', function(err){
+    console.log(err);
+})
+
+//-----------------------------------------------------
+
 import { Strategy as LocalStrategy } from 'passport-local';
 
 const PORT = process.env.PORT || 5000;
@@ -23,7 +36,7 @@ app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({ extended:false }))
 app.use(webpackmide(compiler))
 
-//Here we add the required passport configuration
+//Here we add the required passport configuration ------------------------------
 app.use(passport.initialize());
 
 const options = {
@@ -33,9 +46,20 @@ const options = {
 }
 
 passport.use('local',new LocalStrategy(options,(username, password, done) => {
-    done(null, {
-        username: 'ediaz',
-        token: 'hoaholaholahoala'
+    
+    ModeloUsuarion.findOne({email: username}, function(err,data){
+        if (err) {
+            console.log(err);
+            return done(err)
+        }
+
+        if(!data){
+            return(null, false)
+        }
+
+        return done(null, data);
+        
+
     })
 }))
 
@@ -48,14 +72,25 @@ passport.serializeUser((user, done)=>{
 app.post('/login', passport.authenticate('local'), (req, res) => {
 
     console.log(req.user);
-    res.json({ 
-        object: {
+    res.json( {
             username: req.user.username,
             token: req.user.token
-        }
-    })
+            })
 })
 
+app.post('/registro', function(req,res){
+    new ModeloUsuarion({email: req.body.email,
+        password: req.body.password,
+        nombre: req.body.nombre
+
+    }).save((err)=>{
+        if(err){
+            console.log(err);
+            res.status(200);
+        }
+    })
+
+});
 app.get('/api/puestos', bodyParser.urlencoded({extended:false}),function(req,res){
     if (req.query.id) {
         ModeloPuesto.findById(req.params.id).then((dataa)=>{console.log("con parametros "+dataa); res.json(dataa)})
