@@ -35,13 +35,12 @@ export default class AA extends React.Component{
     }, 2000);
 
     }
-    
-    render(){
-        return <div className="container">
-        <div className="row">
+  render(){
+    return <div className="container">
+      <div className="row publicar-main">
         <div className="col-md-offset-4 col-md-4 ">
         <form method="post" onSubmit={this.enviarPuesto.bind(this)}>
-            <div className="form-group">
+          <div className="form-group">
             <label>Puesto</label>
             <input className="form-control" required name="puestoF" onChange={this.manejarPuesto.bind(this)} />
             </div>
@@ -57,13 +56,12 @@ export default class AA extends React.Component{
             <input className="form-control" required name="companiaF" onChange={this.manejarPuesto.bind(this)} />
             </div>
 
-            <div className="form-group">
-            <label>Datos:</label>
-            <textarea className="form-control" required name="datosF" onChange={this.manejarPuesto.bind(this)} />
+            <div className="input-field col m12">
+              <label>Datos:</label>
+            <textarea style={{height:'150'}} required name="datosF" onChange={this.manejarPuesto.bind(this)} />
             </div>
 
-            <input type="submit" value="Enviar" />
-
+            <input className="waves-effect waves-light btn" type="submit" value="Enviar" />
 
         </form>
             </div>

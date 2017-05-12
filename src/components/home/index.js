@@ -34,18 +34,9 @@ componentDidMount(){
                     </tr>
                 </thead>
                     <tbody>
-                    {/*<tr>
-                        
-                        <td></td>
-                        <td>Santo Domingo</td>
-                        <td><Link to="puesto/45">Programador</Link>  </td>
-                        <td>NewTech</td>
-                           
-                    </tr>*/}
                     {
-                        this.state.puestos.map(valor=>{
-                            return <tr>
-
+                        this.state.puestos.map( (valor, Index) =>{
+                            return <tr key={Index}>
                                 <td></td>
                                 <td>{valor.localizacion}</td>
                                 <td><Link to={"puesto/"+valor._id}>{valor.puesto}</Link>  </td>

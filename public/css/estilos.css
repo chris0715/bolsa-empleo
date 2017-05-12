@@ -6,3 +6,31 @@ body{
 p{
     font-family: fantasy;
 }
+
+.publicar-main{
+    padding: 15px;
+    margin-top: 20px;
+    background-color: lightcyan;
+    border-radius: 10px;
+    height: 85%;
+}
+
+.puesto{
+
+}
+h5.puesto{
+    display: inline
+}
+
+h1,h2,h3{
+    text-align: center
+}
+
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
