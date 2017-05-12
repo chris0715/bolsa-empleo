@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
 import LoginForm from './loginForm';
-import fetch from 'isomorphic-fetch';
-import {connect} from 'react-redux';
+import { browserHistory } from 'react-router'
 
 class LoginContainer extends Component{
-    constructor(){
+    constructor(props, context){
         super();
 
         this.state = { mensaje:"", formData:{}}
-        this.ManejarLogin = this.ManejarLogin.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.formSubmit = this.formSubmit.bind(this);
+        this.formHandle = this.formHandle.bind(this);
     }
 
-    handleChange(event){
+    formHandle(event){
         const inputName = event.target.name;
         const theState = this.state.formData;
         theState[inputName] = event.target.value;
@@ -20,45 +19,35 @@ class LoginContainer extends Component{
         console.log(this.state.formData);            
 
     }
-    ManejarLogin(event){
-        event.preventDefault();
-
-
-        $.ajax({url:'/login',
-        type:'POST',
-        contentType: 'application/x-www-form-urlencoded',
+  formSubmit(event){
+    event.preventDefault();
+    const dataToSend ={email: this.state.formData.email, password: this.state.formData.password}
+    const vm = this;
+    $.ajax({
+        url:'/login',
+        method:'POST',
         headers: {authorization: 'Bearer ' + localStorage.getItem('token')},
-        data:{email: this.state.formData.email, password: this.state.formData.password}
-    }).done((dataz)=>{
-            localStorage.setItem('token', dataz.token)
-            this.setState({mensaje:dataz.success })
+        data:dataToSend })
+     .done((dataz)=>{
+        console.log(dataz)
+          localStorage.setItem('token', dataz.token)
+          this.setState({mensaje:dataz})
+            this.context.router.push('/')            
     });
-    
-                
-            
-       
     }
 
-    render(){
-            return(
-                <div>
-                
-                <span className="right"><i className="fa fa-lg fa-window-close"></i></span>
-                <LoginForm mensaje={this.state.mensaje} onChange={this.handleChange} onSubmit={this.ManejarLogin} />
-                </div>
+  render(){
+    return(
+      <div>
+        <span className="right"><i className="fa fa-lg fa-window-close"></i></span>
+        <LoginForm mensaje= {this.state.mensaje} onChange= {this.formHandle} onSubmit ={ this.formSubmit } />
+      </div>
             );
     }
 }
 
-function mapStateToProps(state){
-    return {
-        userData: state.userData
-    }
-}
+LoginContainer.contextTypes = {
+    router: React.PropTypes.func.isRequired
+};
 
-function mapDispatchToProps(){
-    return {}
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps) (LoginContainer);
+export default LoginContainer;

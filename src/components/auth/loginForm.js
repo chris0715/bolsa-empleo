@@ -4,9 +4,14 @@ import React from 'react';
 
 const Login = (props)=>{
 
-    return(<div className="modal-content">
+    const myStyle={
+        marginTop:'20px'
+    }
+
+    return(
+    <div  className="container">
         
-        <form  method="post" onSubmit={props.onSubmit}>
+        <form style={myStyle}  method="post" onSubmit={props.onSubmit}>
         <div className="form-group">
             <label>Email:</label>
             <input className="form-control" onChange={props.onChange} name="email" type="email" />

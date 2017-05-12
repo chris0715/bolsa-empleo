@@ -9,6 +9,6 @@ import myStore from '../src/store/store';
 
 ReactDom.render(<Provider store={myStore}>
 <Router history={browserHistory}>
-    {Rutas}
-    </Router>
-    </Provider>,document.getElementById('app'));
+  {Rutas}
+</Router>
+</Provider>,document.getElementById('app'));

@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var BrowserSync = require('browser-sync-webpack-plugin')
 var path = require('path');
 
 module.exports = {
@@ -10,7 +11,15 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.css$/, loader: "style!css" },
-            {test: /\.(js|jsx)$/, loader: "babel-loader" }
-        ]
-    }
+            {test: /\.(js|jsx)$/, exclude: /node_modules/, loader: "babel-loader" }
+        ],
+    },
+    plugins:[
+        new BrowserSync({
+            host:'localhost',
+            port: 3000,
+            proxy: 'http://localhost:5000',
+            reload: false
+        })
+    ]
 };
