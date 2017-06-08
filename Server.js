@@ -34,9 +34,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({ extended:false }))
 app.use(bodyParser.json())
-if(process.env.NODE_ENV = 'development'){
-app.use(webpackmide(compiler))
-}
+
 
 app.use(express.session({secret:'this is madness'}))
 
