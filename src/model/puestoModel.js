@@ -1,4 +1,4 @@
-import  mongoose from 'mongoose';
+const  mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const schemaPuestp = mongoose.Schema({
@@ -8,4 +8,4 @@ const schemaPuestp = mongoose.Schema({
     informacion: {type: String, required: true}
 })
 
-export default mongoose.model('modeloPuesto',schemaPuestp);
+module.exports = mongoose.model('modeloPuesto',schemaPuestp);

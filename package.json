@@ -7,7 +7,7 @@
     "node": "^7.4.0"
   },
   "scripts": {
-    "start": "babel-node Server.js",
+    "start": "node Server.js",
     "start-dev": "nodemon Server.js --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress",
@@ -22,11 +22,11 @@
   "homepage": "https://github.com/chris0715/bolsa-empleo#readme",
   "dependencies": {
     "babel-loader": "^6.3.2",
-    "body-parser": "^1.16.1",
+    "body-parser": "^1.17.2",
     "browser-sync": "^2.18.8",
     "browser-sync-webpack-plugin": "^1.1.4",
     "ejs": "^2.5.6",
-    "express": "3",
+    "express": "^3.21.2",
     "express-jwt": "^5.1.0",
     "jquery": "^3.1.1",
     "jsonwebtoken": "^7.3.0",
@@ -41,7 +41,7 @@
     "redux": "^3.6.0",
     "toaster": "^0.1.2",
     "validator": "^7.0.0",
-    "webpack": "^2.2.1"
+    "webpack": "^2.6.1"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",

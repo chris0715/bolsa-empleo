@@ -1,11 +1,10 @@
 var Router = require( 'express' )
-import passport from 'passport'
-import {} from 'react-router'
+const passport = require('passport') 
 
 
 //Models for database Interactions
-import ModeloPuesto from './src/model/puestoModel';
-import ModeloUsuarion from './src/model/userModel';
+const ModeloPuesto = require('./src/model/puestoModel');
+const ModeloUsuarion = require('./src/model/userModel');
 // -------------------------------------------------
 
 const router =  new Router()
@@ -84,4 +83,4 @@ router.get('*', function(req,res){
     res.render('index');
 })
 
-export default router
+module.exports = router

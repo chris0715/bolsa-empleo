@@ -1,17 +1,17 @@
 //Dependencias 
 const express= require('express');
-const webpackmide = require('webpack-dev-middleware');
 const webpack =require( 'webpack');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const ObjetoID = require('mongoose').Types.ObjectId;
 const Jwt = require('express-jwt') ;
-import Router from './router'
+const Router = require('./router')
 
-import ModeloUsuarion from './src/model/userModel';
-import passport from 'passport';
-import sConfig from './src/config';
+const ModeloUsuarion = require ('./src/model/userModel');
+const passport  = require('passport');
+const sConfig = require('./src/config');
 
+const webpackmide = require('webpack-dev-middleware') || '';
 
 // Connection to the database. 
 mongoose.connect(sConfig.externalDatabase);
@@ -21,7 +21,7 @@ mongoose.connection.on('error', function(err){
 
 //-----------------------------------------------------
 
-import { Strategy as LocalStrategy } from 'passport-local';
+const LocalStrategy = require('passport-local').Strategy ;
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -34,7 +34,10 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({ extended:false }))
 app.use(bodyParser.json())
+if(process.env.NODE_ENV = 'development'){
 app.use(webpackmide(compiler))
+}
+
 app.use(express.session({secret:'this is madness'}))
 
 
