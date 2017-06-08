@@ -11,7 +11,7 @@ const ModeloUsuarion = require ('./src/model/userModel');
 const passport  = require('passport');
 const sConfig = require('./src/config');
 
-const webpackmide = require('webpack-dev-middleware') || '';
+//const webpackmide = require('webpack-dev-middleware') || '';
 
 // Connection to the database. 
 mongoose.connect(sConfig.externalDatabase);
